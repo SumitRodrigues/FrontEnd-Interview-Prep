@@ -1,0 +1,56 @@
+# Study Notes on Debouncing in JavaScript
+
+## Introduction to Debouncing
+- **Debouncing** is a programming technique used to ensure that time-consuming tasks do 
+not fire so often, which can lead to performance issues in web applications.
+- It is particularly useful in scenarios where a function is triggered by events that can 
+occur in rapid succession, such as scrolling or resizing a window.
+
+## Key Concepts
+- **Purpose of Debouncing**: To prevent a function from being called multiple times in 
+quick succession. This is crucial for maintaining performance and responsiveness in web 
+applications.
+- **Real-World Applications**:
+  - API calls on scroll events.
+  - Implementing lazy loading for images or content.
+
+## How Debouncing Works
+- A debounce function takes two arguments:
+  1. **Function**: The function you want to debounce.
+  2. **Delay**: The time interval (in milliseconds) that must pass before the function 
+  can be called again.
+  
+- The debounce function will only execute the provided function if the time interval 
+between calls exceeds the specified delay. This means that if the function is called 
+repeatedly within the delay period, it will only execute once after the calls have 
+stopped for the specified delay time.
+
+## Example of Debounce Function
+```javascript
+function debounce(func, delay) {
+    let timeout;
+    return function(...args) {
+        const context = this;
+        clearTimeout(timeout);
+        timeout = setTimeout(() => func.apply(context, args), delay);
+    };
+}
+```
+- In this example, `debounce` creates a new function that delays the execution of `func` 
+until after `delay` milliseconds have passed since the last time the debounced function 
+was invoked.
+
+## Use Cases
+- **Scroll Events**: When making API calls based on scroll position, debouncing can limit 
+the number of requests sent to the server, improving performance.
+- **Input Fields**: In search boxes, debouncing can prevent sending a request for every 
+keystroke, instead waiting until the user has stopped typing for a specified time.
+
+## Conclusion
+- Debouncing is a valuable technique in JavaScript that enhances the performance of web 
+applications by reducing the number of function calls in response to rapid events. 
+Understanding and implementing debouncing can lead to smoother user experiences in web 
+development.
+
+For more detailed examples and scenarios, refer to the video by Akshay, where he explains 
+the concept step-by-step and demonstrates coding from scratch .

@@ -67,16 +67,38 @@
 
 // Using Function Closures
 
-let multiply = function (x) {
-    return function (y) {
-        console.log(x * y);
-    }
-}
-let multiplyByTwo = multiply(2);
-multiplyByTwo(5); // 10
-
-// let multiplyByTwo = multiply.bind(this, 2, 3); //using bind function to copy the multiply function
+// let multiply = function (x) {
+//     return function (y) {
+//         console.log(x * y);
+//     }
+// }
+// let multiplyByTwo = multiply(2);
 // multiplyByTwo(5); // 10
 
-let multiplyByThree = multiply.bind(this, 3); //using bind function to copy the multiply function
-multiplyByThree(5); // 15
+// // let multiplyByTwo = multiply.bind(this, 2, 3); //using bind function to copy the multiply function
+// // multiplyByTwo(5); // 10
+
+// let multiplyByThree = multiply.bind(this, 3); //using bind function to copy the multiply function
+// multiplyByThree(5); // 15
+
+// Debouncing in Javascript
+
+let counter = 0;
+const getData = () => {
+    // Calls an API and gets Data
+    console.log("Fetching Data...", counter++);
+}
+
+const doSomeMagic = function (fn, d) {
+    let timer;
+    return function() {
+        let context = this,
+            args = arguments;
+            clearTimeout(timer);
+        timer = setTimeout(() => {
+            fn.apply(context, arguments);
+        }, d);
+    }
+}
+
+const betterFunction = doSomeMagic(getData, 300);
