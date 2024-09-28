@@ -1,0 +1,62 @@
+# Notes on Polyfill for Bind Method
+
+## Overview
+- The **bind method** is a commonly asked interview question in tech companies. It allows you to create a new function that, when called, has its `this` keyword set to a specific value. 
+
+## Key Concepts
+- **Polyfill**: A polyfill is a piece of code that provides functionality that is not natively supported by a browser. In this context, it refers to creating a custom implementation of the `bind` method for browsers that do not support it. 
+  
+## Implementation Steps
+1. **Create an Object**: Define an object with properties (e.g., `firstName`, `lastName`) and a method (e.g., `printName`) that logs the name to the console. 
+  
+2. **Custom Bind Function**: Implement a function called `myBindFunction` that mimics the behavior of the native `bind` method. This function should:
+   - Return a new function.
+   - Handle and concatenate arguments properly.
+   - Manage the context (`this`) correctly. 
+
+3. **Interview Expectations**: Interviewers look for a clear understanding of how to handle function references, arguments, and context when writing your own implementation of the `bind` method. <chunk>30b76858-3fea-4138-a38a-c4bec345ba2b>
+
+## Conclusion
+- Writing a polyfill for the `bind` method is a valuable skill that can impress interviewers. Understanding how to manipulate function context and arguments is crucial for implementing this functionality effectively. <chunk>30b76858-3fea-4138-a38a-c4bec345ba2b>
+
+
+1
+Polyfill for bind method | Javascript Interview Questions
+Hello Everyone This is Akshay.. In this video we will be covering polyfill for bind method
+ is one of the most commonly asked interview queries in bigger companies I have faced this
+  question when i was interviewing for Flippkart.com, walmart and hola.com And a lot of 
+  other companies do ask this question And i have myself asked this question a lot of 
+  times if you've no clue about bind method, then I would suggest to you go back to my 
+  previous videos do ask this question? And I myself ask this question a lot of times. 
+  If you have no clue what bind method is, then I would suggest you to go back to my 
+  previous video and check out where I have discussed call apply and bind method which 
+  is used over here
+00:0000:31
+video thumbnail
+Topic Card
+2
+Polyfill for bind method | Javascript Interview Questions
+in this video. For those who don't know what polyfill is, I would like to say that 
+polyfill is sort of a browser fallback. So what if suppose your browser doesn't have a 
+bing function and you have to write your own bind function that is what we are going to 
+do. So, interviewers are expecting you to write your own implementation of the bind 
+function. So, I would suggest you to open up your Console and start coding along with me 
+Let's dive into the code now Let's create an Object Name
+00:3101:01
+video thumbnail
+Topic Card
+3
+Polyfill for bind method | Javascript Interview Questions
+which has two properties firstName and, the lastName and we also have a function printName
+ which just basically logs the name to the console our task is to create our own 
+ implementation
+01:0301:41
+video thumbnail
+Topic Card
+4
+Polyfill for bind method | Javascript Interview Questions
+So, it prints the name. So, that's how the traditional bind function works. Our task is 
+to write our own implementation of bindMethod, something like a myBindFunction which 
+behaves exactly like this bind method over here. What I mean by that is, suppose had let 
+so let us copy this so suppose we have print my name to method instead of bind it uses my
+ bind
