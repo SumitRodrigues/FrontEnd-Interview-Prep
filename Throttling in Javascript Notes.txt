@@ -1,0 +1,76 @@
+# Study Notes on Throttling in JavaScript
+
+## Introduction to Throttling
+**Throttling** is a technique used in programming, particularly in JavaScript, to limit 
+the number of times a function can be called over time. It's especially useful for 
+optimizing performance and managing resource usage.
+
+### Key Points
+- **Purpose**: Throttling is primarily used for **performance optimization** and **rate 
+limiting** of function calls, ensuring that a function is not called too frequently.
+- **Example Scenario**: If a function is triggered by a user action, such as clicking a 
+button, throttling ensures that the function can only execute once every specified 
+interval (e.g., 500 milliseconds) .
+
+## How Throttling Works
+- When a function is called, throttling will delay the next call for a defined period.
+- For instance, if a function is triggered at a click event, the next execution will only 
+occur after the specified delay (e.g., 500 ms) has passed.
+
+### Visual Representation
+- Imagine a timeline where function calls are spaced out:
+  - **Click Event 1**: Function executes
+  - **Wait 500 ms**
+  - **Click Event 2**: Function executes
+  - **Wait 500 ms**
+  - **Click Event 3**: Function executes
+
+This ensures that even if multiple clicks happen in quick succession, the function will 
+only execute at the defined intervals.
+
+## Implementation of Throttling
+To implement a throttling function, you typically create a wrapper around the function 
+you want to throttle. Here’s a basic structure:
+
+```javascript
+function throttle(func, limit) {
+    let lastFunc;
+    let lastRan;
+
+    return function() {
+        const context = this;
+        const args = arguments;
+
+        if (!lastRan) {
+            func.apply(context, args);
+            lastRan = Date.now();
+        } else {
+            clearTimeout(lastFunc);
+            lastFunc = setTimeout(function() {
+                if ((Date.now() - lastRan) >= limit) {
+                    func.apply(context, args);
+                    lastRan = Date.now();
+                }
+            }, limit - (Date.now() - lastRan));
+        }
+    }
+}
+```
+
+### Explanation of the Code
+- **Parameters**:
+  - `func`: The function to be throttled.
+  - `limit`: The time interval (in milliseconds) to wait before allowing the next 
+  execution.
+- **Logic**:
+  - The function checks if it has been executed recently. If not, it executes immediately.
+   If it has, it sets a timeout to execute after the limit has passed.
+
+## Conclusion
+Throttling is an essential concept in JavaScript for managing function calls efficiently. 
+Understanding how to implement and utilize throttling can significantly enhance the 
+performance of web applications, especially in scenarios involving user interactions like 
+scrolling or clicking.
+
+For deeper insights into throttling and its differences from debouncing, consider 
+reviewing related materials or videos that explain these concepts in detail .

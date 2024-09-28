@@ -89,16 +89,16 @@ const getData = () => {
     console.log("Fetching Data...", counter++);
 }
 
-const doSomeMagic = function (fn, d) {
+const debounce = function (fn, d) {
     let timer;
     return function() {
         let context = this,
             args = arguments;
             clearTimeout(timer);
         timer = setTimeout(() => {
-            fn.apply(context, arguments);
+            fn.apply(context, args);
         }, d);
     }
 }
 
-const betterFunction = doSomeMagic(getData, 300);
+const betterFunction = debounce(getData, 500);
