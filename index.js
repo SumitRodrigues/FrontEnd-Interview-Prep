@@ -34,19 +34,20 @@ let name = {
     lastname: "Rodrigues"
 }
 
-let printName = function() {
-    console.log( this.firstname + " " + this.lastname);
+let printName = function(hometown, state, country) {
+    console.log( this.firstname + " " + this.lastname + " , " + hometown + " , " + state + " , " + country);
 }
 
-let printMyName = printName.bind(name);
-printMyName();
+let printMyName = printName.bind(name, "Fullerton");
+printMyName("California", "USA");
 
 Function.prototype.myBind = function (...args) {
     let obj = this;
-    return function () {
-        obj.call(args[0]);
+        params = args.slice(1);
+    return function (...args2) {
+        obj.apply(args[0], [...params, ...args2]);
     }
 }
 
-let printMyName2 = printName.myBind(name);
-printMyName2();
+let printMyName2 = printName.myBind(name, "Fullerton");
+printMyName2("California", "USA");
