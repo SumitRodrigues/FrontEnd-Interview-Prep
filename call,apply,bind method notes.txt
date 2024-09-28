@@ -1,0 +1,65 @@
+# Study Notes on JavaScript: Call, Apply, and Bind Methods
+
+## Overview
+In JavaScript, the **Call**, **Apply**, and **Bind** methods are essential for controlling the context (`this`) in which functions are executed. They are particularly useful when dealing with object methods.
+
+## 1. Call Method
+- **Definition**: The `call` method calls a function with a given `this` value and arguments provided individually.
+- **Usage**:
+  ```javascript
+  function greet() {
+      console.log("Hello, " + this.firstName + " " + this.lastName);
+  }
+
+  const person = {
+      firstName: "John",
+      lastName: "Doe"
+  };
+
+  greet.call(person); // Output: Hello, John Doe
+  ```
+
+## 2. Apply Method
+- **Definition**: The `apply` method is similar to `call`, but it takes an array of arguments instead of individual arguments.
+- **Usage**:
+  ```javascript
+  function greet(greeting) {
+      console.log(greeting + ", " + this.firstName + " " + this.lastName);
+  }
+
+  const person = {
+      firstName: "Jane",
+      lastName: "Doe"
+  };
+
+  greet.apply(person, ["Hi"]); // Output: Hi, Jane Doe
+  ```
+
+## 3. Bind Method
+- **Definition**: The `bind` method creates a new function that, when called, has its `this` keyword set to the provided value, with a given sequence of arguments preceding any provided when the new function is called.
+- **Usage**:
+  ```javascript
+  function greet() {
+      console.log("Hello, " + this.firstName + " " + this.lastName);
+  }
+
+  const person = {
+      firstName: "Alice",
+      lastName: "Smith"
+  };
+
+  const greetAlice = greet.bind(person);
+  greetAlice(); // Output: Hello, Alice Smith
+  ```
+
+## Key Differences
+- **Call**: Passes arguments individually.
+- **Apply**: Passes arguments as an array.
+- **Bind**: Returns a new function with a bound `this` value.
+
+## Importance
+These methods are commonly asked in interviews as they are foundational concepts in JavaScript, influencing how functions operate within different contexts. Understanding them is crucial for mastering JavaScript's function behavior and object-oriented programming.
+
+---
+
+Feel free to practice coding these methods in your console to solidify your understanding!
