@@ -54,9 +54,9 @@
 
 // Function Currying
 
-let multiply = function (x,y) {
-    console.log(x * y);
-}
+// let multiply = function (x,y) {
+//     console.log(x * y);
+// }
 
 // below is the simple implementation of how the bind function would work
 
@@ -67,9 +67,16 @@ let multiply = function (x,y) {
 
 // Using Function Closures
 
-
-let multiplyByTwo = multiply.bind(this, 2, 3); //using bind function to copy the multiply function
+let multiply = function (x) {
+    return function (y) {
+        console.log(x * y);
+    }
+}
+let multiplyByTwo = multiply(2);
 multiplyByTwo(5); // 10
+
+// let multiplyByTwo = multiply.bind(this, 2, 3); //using bind function to copy the multiply function
+// multiplyByTwo(5); // 10
 
 let multiplyByThree = multiply.bind(this, 3); //using bind function to copy the multiply function
 multiplyByThree(5); // 15
