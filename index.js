@@ -21,3 +21,9 @@ printFullName.call(name2, "Los Angeles", "California");
 
 printFullName.apply(name2, ["Los Angeles", "California"]);
 
+// Bind Method
+
+let printMyName = printFullName.bind(name2, "Los Angeles", "California");
+console.log(printMyName)
+printMyName(); // Los Angeles, California James Anderson
+

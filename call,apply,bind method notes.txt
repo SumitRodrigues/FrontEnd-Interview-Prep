@@ -41,6 +41,9 @@ So, instead of passing these arguments individually in the call method, in the a
 
 ## 3. Bind Method
 - **Definition**: The `bind` method creates a new function that, when called, has its `this` keyword set to the provided value, with a given sequence of arguments preceding any provided when the new function is called.
+- How it works: The bind method looks exactly the same as call method, the only difference is instead of directly calling the method, the bind method binds this method "printFullName" with a pbject and returns us the copy of that method
+This is just used to bind and keep a copy of that method and use it later.
+The only difference between bind and call is that it gives you the copy but which can be invoked later rather than directly invoking it wherever we are writing the line of code
 - **Usage**:
   ```javascript
   function greet() {
