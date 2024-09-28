@@ -5,6 +5,8 @@ In JavaScript, the **Call**, **Apply**, and **Bind** methods are essential for c
 
 ## 1. Call Method
 - **Definition**: The `call` method calls a function with a given `this` value and arguments provided individually.
+- How it works: We can borrow functions from other objects and use it with the data of some other objects, first of all take the function which needs to be called.
+In the Call() method, the first argument will be the reference or in simple terms what we want the 'this' keyword to be pointing to i.e 'name2' object
 - **Usage**:
   ```javascript
   function greet() {

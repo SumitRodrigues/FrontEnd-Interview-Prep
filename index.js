@@ -1,13 +1,14 @@
 let name = {
     firstname: "Sumit",
     lastname: "Rodrigues",
-    printFullName: function() {
-        // debugger; // Pause execution here to inspect
-        console.log(this.firstname + " " + this.lastname);
-    }
 }
 
-name.printFullName();
+printFullName = function(hometown, state) {
+    // debugger; // Pause execution here to inspect
+    console.log(this.firstname + " " + this.lastname + " from " + hometown + " , " + state);
+}
+
+printFullName.call(name, "Alberta" , "GA");
 
 let name2 = {
     firstname: "James",
@@ -16,4 +17,7 @@ let name2 = {
 
 
 // Function Borrowing
-name.printFullName.call(name2);
+printFullName.call(name2, "Los Angeles", "California");
+
+printFullName.apply(name2, ["Los Angeles", "California"]);
+
