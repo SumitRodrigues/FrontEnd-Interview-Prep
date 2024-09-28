@@ -1,0 +1,50 @@
+# Study Notes on Function Currying
+
+## What is Function Currying?
+**Function Currying** is a technique in functional programming where a function with 
+multiple arguments is transformed into a sequence of functions, each taking a single 
+argument. This allows for partial application of functions, making them more flexible and 
+reusable.
+
+### Key Concepts
+- **Currying** allows you to create specialized functions by fixing some arguments of a 
+function and generating a new function that takes the remaining arguments.
+- It is often used in JavaScript and other functional programming languages.
+
+## Examples of Function Currying
+1. **Basic Example**: 
+   - Let's say we have a function `Multiply(a, b)` that multiplies two numbers.
+   - By currying, we can create a new function `MultiplyBy3` that multiplies any number 
+   by 3:
+     ```javascript
+     function Multiply(a) {
+         return function(b) {
+             return a * b;
+         };
+     }
+     
+     const MultiplyBy3 = Multiply(3);
+     console.log(MultiplyBy3(5)); // Outputs: 15
+     ```
+   This demonstrates how currying can simplify function calls and enhance code readability .
+
+2. **Creating a Curried Function**:
+   - You can also create a curried version of a multiplication function:
+     ```javascript
+     const Multiply = (a) => (b) => a * b;
+     const MultiplyBy2 = Multiply(2);
+     console.log(MultiplyBy2(10)); // Outputs: 20
+     ```
+   This shows how you can create a new function with one argument fixed, allowing for 
+   easier reuse .
+
+## Benefits of Function Currying
+- **Reusability**: You can create more specific functions from a general function.
+- **Readability**: Code becomes clearer and easier to understand.
+- **Flexibility**: You can partially apply functions and create new ones on the fly.
+
+## Conclusion
+Function currying is a powerful concept that enhances the way functions are handled in 
+programming. By breaking down functions into a series of simpler functions, you can 
+achieve greater flexibility and maintainability in your code. Keep practicing with 
+different functions to become more comfortable with currying techniques .
