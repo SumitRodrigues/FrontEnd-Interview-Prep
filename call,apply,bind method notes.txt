@@ -23,6 +23,8 @@ In the Call() method, the first argument will be the reference or in simple term
 
 ## 2. Apply Method
 - **Definition**: The `apply` method is similar to `call`, but it takes an array of arguments instead of individual arguments.
+- How it works: The `apply` method is similar to the `call` method, but here the second argument is a list to the arguments which we had to pass in the function
+So, instead of passing these arguments individually in the call method, in the apply method we pass these arguments in a arrayList.
 - **Usage**:
   ```javascript
   function greet(greeting) {
