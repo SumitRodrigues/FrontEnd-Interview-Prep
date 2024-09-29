@@ -81,24 +81,48 @@
 // let multiplyByThree = multiply.bind(this, 3); //using bind function to copy the multiply function
 // multiplyByThree(5); // 15
 
-// Debouncing in Javascript
+// // Debouncing in Javascript
 
-let counter = 0;
-const getData = () => {
-    // Calls an API and gets Data
-    console.log("Fetching Data...", counter++);
-}
+// let counter = 0;
+// const getData = () => {
+//     // Calls an API and gets Data
+//     console.log("Fetching Data...", counter++);
+// }
 
-const debounce = function (fn, d) {
-    let timer;
-    return function() {
-        let context = this,
-            args = arguments;
-            clearTimeout(timer);
-        timer = setTimeout(() => {
-            fn.apply(context, args);
-        }, d);
-    }
-}
+// const debounce = function (fn, d) {
+//     let timer;
+//     return function() {
+//         let context = this,
+//             args = arguments;
+//             clearTimeout(timer);
+//         timer = setTimeout(() => {
+//             fn.apply(context, args);
+//         }, d);
+//     }
+// }
 
-const betterFunction = debounce(getData, 500);
+// const betterFunction = debounce(getData, 500);
+
+// // Throttling in Javascript
+
+// let counter = 0;
+// const getData = () => {
+//     console.log("Fetching Data via throttling...", counter++);
+// }
+
+// const throttling = function (fn, limit) {
+//     let flag = true;
+//     return function() {
+//         let context = this,
+//         args = arguments;
+//         if (flag) {
+//             fn.apply(context, args);
+//             flag = false;
+//             setTimeout(() => {
+//                 flag = true;
+//             }, limit);
+//         }
+//     }
+// }
+
+// const betterFunction = throttling(getData, 3000);
