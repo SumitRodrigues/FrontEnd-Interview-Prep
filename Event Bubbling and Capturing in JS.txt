@@ -1,0 +1,49 @@
+# Study Notes on Event Bubbling and Capturing in JavaScript
+
+## Overview
+Event bubbling and capturing are essential concepts in JavaScript that describe how events
+ propagate through the DOM (Document Object Model) tree. Understanding these concepts is 
+ crucial for effective event handling in web development.
+
+## Key Concepts
+
+### 1. **Event Propagation**
+- **Event Bubbling**: 
+  - Events start from the target element and propagate up to the root of the DOM tree.
+  - **Example**: If you click a child element, the event handler for the child executes 
+  first, followed by the parent, and then the grandparent.
+  - **Sequence**: 
+    - `onClickChild` → `onClickParent` → `onClickGrandparent` 
+
+- **Event Capturing**: 
+  - Events start from the root and propagate down to the target element.
+  - **Example**: If you click a child element, the event handler for the grandparent 
+  executes first, followed by the parent, and then the child.
+  - **Sequence**: 
+    - `onClickGrandparent` → `onClickParent` → `onClickChild` 
+
+### 2. **Configuration of Event Propagation**
+- You can control whether an event bubbles up or captures down by passing parameters when 
+adding event listeners.
+- If you do not pass any attribute or pass `false`, events will bubble up by default .
+
+### 3. **Performance Considerations**
+- Event propagation can be performance-intensive, especially with many nested elements.
+- It’s important to manage event propagation effectively to avoid performance issues .
+
+## Visual Representation
+- **Bubbling**: Think of it as bubbles rising to the surface.
+- **Capturing**: Imagine a net capturing fish from the top down.
+
+## Important Notes
+- Always be aware of the order of event handlers when designing your event logic.
+- Use event delegation to optimize performance by attaching a single event listener to a 
+parent element instead of multiple listeners on child elements.
+
+## Questions to Consider
+- What is the difference between event bubbling and capturing?
+- How can you control event propagation in your JavaScript code?
+- Why is it important to consider performance when handling events?
+
+These notes should provide a clear understanding of event bubbling and capturing, helping 
+you grasp how events work in JavaScript.

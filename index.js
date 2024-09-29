@@ -126,3 +126,6 @@
 // }
 
 // const betterFunction = throttling(getData, 3000);
+
+// Event Bubbling
+
