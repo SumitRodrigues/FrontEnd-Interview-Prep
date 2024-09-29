@@ -1,0 +1,73 @@
+# Study Notes on Async and Defer Attributes in JavaScript
+
+## Overview
+In JavaScript, the **async** and **defer** attributes are used with `<script>` tags to 
+control how external scripts are loaded and executed in relation to HTML parsing. 
+Understanding these attributes is crucial for optimizing web page performance.
+
+## Key Concepts
+
+### 1. **Script Loading Scenarios**
+- **Normal Script Loading**: When a script is included without any attributes, the browser
+ stops HTML parsing until the script is fetched and executed. This can lead to delays in 
+ rendering the page.
+  
+- **Async Attribute**: 
+  - Scripts with the **async** attribute are fetched in parallel with HTML parsing.
+  - They are executed as soon as they are available, which means the order of execution is
+   not guaranteed. This can be problematic if scripts depend on each other.
+  - Example: 
+    ```html
+    <script src="script1.js" async></script>
+    <script src="script2.js" async></script>
+    ```
+
+- **Defer Attribute**: 
+  - Scripts with the **defer** attribute are also fetched in parallel, but they are 
+  executed only after the HTML parsing is complete.
+  - This guarantees the order of execution, making it suitable for scripts that depend on 
+  one another.
+  - Example:
+    ```html
+    <script src="script1.js" defer></script>
+    <script src="script2.js" defer></script>
+    ```
+
+### 2. **Execution Flow**
+- **With Async**: HTML parsing is interrupted for script execution when the script is 
+ready.
+- **With Defer**: HTML parsing continues uninterrupted, and scripts execute only after 
+parsing is finished.
+
+### 3. **When to Use Which?**
+- Use **async** for scripts that do not depend on each other and can run independently.
+- Use **defer** for scripts that are dependent on each other or need to be executed in a 
+specific order.
+
+## Summary Table
+
+\begin{tabular}{|c|c|c|} 
+\hline 
+Attribute & Loading Behavior & Execution Order \\ 
+\hline 
+Normal & Blocks HTML parsing & Sequential \\ 
+\hline 
+Async & Non-blocking & No guarantee \\ 
+\hline 
+Defer & Non-blocking & Guaranteed \\ 
+\hline 
+\end{tabular}
+
+## Important Points
+- The **async** attribute does not guarantee the order of execution of scripts, while 
+**defer** does.
+- Choosing the right attribute can significantly impact the performance and behavior of 
+your web page.
+
+## Conclusion
+Understanding the differences between async and defer attributes is essential for 
+optimizing script loading and ensuring that your web applications run smoothly. Use these
+ attributes wisely based on your script dependencies and loading requirements. 
+
+This summary should help you grasp the key concepts surrounding async and defer attributes
+ in JavaScript!
