@@ -131,49 +131,49 @@
 
 // Coding questions from github
 
-// Question: What is the value of foo?
-var foo = 10 + '20';
-console.log(foo); // "1020"
+// // Question: What is the value of foo?
+// var foo = 10 + '20';
+// console.log(foo); // "1020"
 
-// Question: What will be the output of the code below?
-console.log(0.1 + 0.2 == 0.3);
+// // Question: What will be the output of the code below?
+// console.log(0.1 + 0.2 == 0.3);
 
-// Question: How would you make this work?
-function add(a, b) {
-    // If the second argument 'b' is provided, return the sum of 'a' and 'b'
-    if (b !== undefined) {
-      return a + b;
-    }
+// // Question: How would you make this work?
+// function add(a, b) {
+//     // If the second argument 'b' is provided, return the sum of 'a' and 'b'
+//     if (b !== undefined) {
+//       return a + b;
+//     }
   
-    // If only one argument 'a' is provided, return a new function that takes 'b' as its argument
-    return function(b) {
-      return a + b;
-    };
-  }
+//     // If only one argument 'a' is provided, return a new function that takes 'b' as its argument
+//     return function(b) {
+//       return a + b;
+//     };
+//   }
   
-  // Examples
-  console.log(add(2, 5)); // 7
-  console.log(add(2)(5)); // 7
+//   // Examples
+//   console.log(add(2, 5)); // 7
+//   console.log(add(2)(5)); // 7
 
 
-  //Question: What value is returned from the following statement?
-  console.log("i'm a lasagna hog".split("").reverse().join(""));
+//   //Question: What value is returned from the following statement?
+//   console.log("i'm a lasagna hog".split("").reverse().join(""));
 
-  // Question: What is the value of window.foo?
-  console.log( window.foo || ( window.foo = "bar" ) );
+//   // Question: What is the value of window.foo?
+//   console.log( window.foo || ( window.foo = "bar" ) );
 
-  // Question: What is the outcome of the two alerts below?
-  var foo = "Hello";
-  (function() {
-    var bar = " World";
-    alert(foo + bar);
-  })();
-  alert(foo + bar);
+//   // Question: What is the outcome of the two alerts below?
+//   var foo = "Hello";
+//   (function() {
+//     var bar = " World";
+//     alert(foo + bar);
+//   })();
+//   alert(foo + bar);
 
-  // Question: What is the value of foo.length?
-  var foo = [];
-  foo.push(1);
-  foo.push(2);
+//   // Question: What is the value of foo.length?
+//   var foo = [];
+//   foo.push(1);
+//   foo.push(2);
 /* Explanation:
 
 	1.	var foo = [];:
@@ -194,3 +194,50 @@ The value of foo.length is 2 because there are two elements (1 and 2) in the arr
 So, the value of foo.length is:
 
 2. */
+
+// // Question: What is the value of foo.x?
+
+// var foo = {n: 1};
+// var bar = foo;
+// console.log(foo.x = foo = {n: 2});
+
+// //Question: What does the following code print?
+
+// console.log('one');
+// setTimeout(function() {
+//   console.log('two');
+// }, 0);
+// Promise.resolve().then(function() {
+//   console.log('three');
+// })
+// console.log('four');
+
+// // Question: What is the difference between these four promises?
+
+// doSomething().then(function () {
+//   return doSomethingElse();
+// });
+
+// doSomething().then(function () {
+//   doSomethingElse();
+// });
+
+// doSomething().then(doSomethingElse());
+
+// doSomething().then(doSomethingElse);
+
+// Question: Consider the two functions below. Will they both return the same thing? Why or why not?
+
+function foo1()
+{
+  return {
+      bar: "hello"
+  };
+}
+
+function foo2()
+{
+  return {
+      bar: "hello"
+  };
+}
