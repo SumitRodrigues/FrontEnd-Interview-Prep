@@ -42,8 +42,29 @@ function readLine() {
  * Implementation for this function needs to be provided as part of the solution.
  */
 function minDaysToTargetEngagement(initialEngagementScore, targetEngagementScore, trainingEngagementScore) {
-    // This is a placeholder function that needs to be implemented to solve the problem.
-    // Logic should be added here to calculate the minimum days required to reach the target engagement score.
+    let n = trainingEngagementScore.length;
+    
+    // Create a DP array to track the minimum days required to reach each engagement score
+    let dp = Array(targetEngagementScore + 1).fill(Infinity);
+    dp[initialEngagementScore] = 0;
+
+    for (let i = initialEngagementScore; i <= targetEngagementScore; i++) {
+        if (dp[i] == Infinity) continue;
+
+        // Option 1: Increase the engagement score by 1 each day
+        if (i + 1 <= targetEngagementScore) {
+            dp[i + 1] = Math.min(dp[i + 1], dp[i] + 1);
+        }
+
+        // Option 2: Use each training score to train the AI model
+        for (let score of trainingEngagementScore) {
+            if (i + score <= targetEngagementScore) {
+                dp[i + score] = Math.min(dp[i + score], dp[i] + 1);
+            }
+        }
+    }
+
+    return dp[targetEngagementScore];
 }
 
 /*

@@ -40,8 +40,38 @@ function readLine() {
  *  2. Date timeStamp - A Date object representing the specific timestamp up to which the most streamed videos are to be calculated
  */
 function mostStreamed(videoLog, timeStamp) {
-    // This function needs to be implemented to solve the given problem statement.
-    // Logic should be added here to find the most streamed videos up to the given 'timeStamp'.
+    // Convert the input timestamp to milliseconds for easier comparison
+    const timeInMs = timeStamp.getTime();
+
+    // Create a map to store the total watch time for each video within the given time frame
+    const watchTimeMap = new Map();
+
+    // Define the time window: 1 hour (in milliseconds) before and after the given timestamp
+    const oneHour = 60 * 60 * 1000;
+
+    // Filter logs to include only those watched within 1 hour of the given timestamp
+    for (const log of videoLog) {
+        const logTimeInMs = log.time.getTime();
+
+        // Check if the video falls within the 1-hour window before or after the timestamp
+        if (Math.abs(logTimeInMs - timeInMs) <= oneHour) {
+            // Update the total watch time for the video
+            watchTimeMap.set(log.videoID, (watchTimeMap.get(log.videoID) || 0) + log.duration);
+        }
+    }
+
+    // Convert the watchTimeMap into an array for sorting
+    const sortedVideos = Array.from(watchTimeMap).sort((a, b) => {
+        // Sort by total watch time in descending order
+        if (b[1] !== a[1]) {
+            return b[1] - a[1];
+        }
+        // If watch time is the same, sort by video ID in lexicographical order
+        return a[0].localeCompare(b[0]);
+    });
+
+    // Extract and return only the video IDs in the required order
+    return sortedVideos.map(video => video[0]);
 }
 
 /*
